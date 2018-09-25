@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import API from "./utils/API";
 import "./App.css";
 import Search from "./components/Search";
@@ -58,14 +57,14 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">New York Times Articles</h1>
         </header>
-        <div class="container">
-          <div class="card">
+        <div className="container">
+          <div className="card">
             <Search />
           </div>
-          <div class="card">
+          <div className="card">
             <Results />
           </div>
-          <div class="card">
+          <div className="card">
             <Saved />
           </div>
         </div>

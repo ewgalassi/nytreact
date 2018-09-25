@@ -20,7 +20,7 @@ class Saved extends Component {
                         <h3>No Saved Articles Yet</h3>
                     )}
             </div>
-        );
+        )
     }
 }
 

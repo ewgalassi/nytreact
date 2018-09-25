@@ -20,7 +20,7 @@ class Results extends Component {
                         <h3>No Results to Display</h3>
                     )}
             </div>
-        );
+        )
     }
 }
 

@@ -6,22 +6,21 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve up static assets
-app.use(express.static("client/build"));
+app.use(express.static("client/public"));
 // Add routes, both API and view
 app.use(routes);
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/public', 'index.html'));
+});
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/nytreact",
-  {
-    useMongoClient: true
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
 
 // Start the API server
 app.listen(PORT, function() {
