@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static("client/public"));
 // Add routes, both API and view
-app.use("/api", routes);
+app.use(routes);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client/public', 'index.html'));

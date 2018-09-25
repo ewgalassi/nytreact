@@ -4,6 +4,7 @@ export default {
   // Gets all books
   getArticles: function(topic, startYear, endYear) {
     console.log("EGT ARTICLES");
+    console.log(topic, startYear, endYear)
     return axios.get("/api/nytArticles", { params: { q: topic, begin_date: startYear, end_date: endYear }});
   },
   // Gets the book with the given id

@@ -3,14 +3,14 @@ const router = require("express").Router();
 const articlesController = require("../../controllers/articlesController");
 const axios = require("axios");
 
-const apikey = process.env.SECRET_KEY
+const apikey = process.env.API_KEY
 
 router.get("/nytArticles", (req, res) => {
+  console.log("hitting /nytArticles route")
   const { topic, startYear, endYear } = req.query;
-  console.log("server stuff");
   axios
     .get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apikey}`, { params: { q: topic, begin_date: startYear, end_date: endYear }})
-    .then(results => console.log(results))
+    .then(({ data: { results } }) => res.json(results))
     .catch(err => res.status(422).json(err));
 });
 
