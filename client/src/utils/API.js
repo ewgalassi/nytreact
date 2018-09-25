@@ -2,8 +2,9 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getArticles: function() {
-    return axios.get("/api/articles");
+  getArticles: function(topic, startYear, endYear) {
+    console.log("EGT ARTICLES");
+    return axios.get("/api/nytArticles", { params: { q: topic, begin_date: startYear, end_date: endYear }});
   },
   // Gets the book with the given id
   getArticle: function(id) {

@@ -40,13 +40,18 @@ class App extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log("click button");
     if (this.state.topic) {
-      API.saveArticle({
+      API.getArticles({
         topic: this.state.topic,
         startYear: this.state.startYear,
         endYear: this.state.endYear
       })
-        .then(res => this.loadArticles())
+        .then(res => {
+          console.log("callback");
+          this.loadArticles()
+          this.setState({ articles: res.data });
+        })
         .catch(err => console.log(err));
     }
   };
@@ -59,7 +64,7 @@ class App extends Component {
         </header>
         <div className="container">
           <div className="card">
-            <Search />
+            <Search handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
           </div>
           <div className="card">
             <Results />
